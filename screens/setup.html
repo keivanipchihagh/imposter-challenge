@@ -1,0 +1,50 @@
+<section class="screen" id="screen-setup">
+  <header class="hero">
+    <h1 class="logo">IMPOSTER<span class="logo-accent">CHALLENGE</span></h1>
+    <p class="tagline">Five get the question. One gets the lie. Find the fraud.</p>
+  </header>
+
+  <div class="card">
+    <h2 class="card-title">Players</h2>
+    <p class="hint">Add everyone playing — including you, the host.</p>
+    <div id="player-list" class="player-list"></div>
+    <div class="add-row">
+      <input type="text" id="player-input" placeholder="Add a player name" autocomplete="off" maxlength="20" />
+      <button class="btn btn-ghost btn-add" id="btn-add-player" type="button">＋</button>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2 class="card-title">Vibe</h2>
+    <div class="vibe-grid" id="vibe-grid"></div>
+  </div>
+
+  <div class="card">
+    <h2 class="card-title">Settings</h2>
+    <div class="setting-row">
+      <label for="rounds-input">Rounds</label>
+      <div class="stepper">
+        <button type="button" class="step" data-step="rounds" data-dir="-1">−</button>
+        <span id="rounds-val">3</span>
+        <button type="button" class="step" data-step="rounds" data-dir="1">+</button>
+      </div>
+    </div>
+    <div class="setting-row">
+      <label for="timer-input">Discussion timer</label>
+      <div class="stepper">
+        <button type="button" class="step" data-step="timer" data-dir="-1">−</button>
+        <span id="timer-val">90s</span>
+        <button type="button" class="step" data-step="timer" data-dir="1">+</button>
+      </div>
+    </div>
+    <div class="setting-row toggle-row">
+      <div>
+        <label>Allow same imposter twice in a row</label>
+      </div>
+      <button type="button" class="toggle" id="toggle-repeat" aria-pressed="false"><span class="knob"></span></button>
+    </div>
+  </div>
+
+  <p class="error-msg" id="setup-error"></p>
+  <button class="btn btn-primary btn-big" id="btn-start" type="button">Start Game</button>
+</section>

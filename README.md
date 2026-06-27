@@ -1,19 +1,18 @@
 # 🕵️ Imposter Challenge
 
-A party game inspired by the OG Crew "Imposter" segment. Five players get the **real** question. One — the imposter — gets a sneaky variant. Discuss, defend, deceive, and figure out who's lying.
+A party game of bluffing and deduction. Everyone gets the same question — except one player, the **imposter**, who gets a sneaky variant. Talk it out, vote, and unmask the fraud.
 
-**100% client-side.** No backend, no accounts, no data leaves the device. Hash-based routing, so it runs cleanly on **GitHub Pages**.
+**▶️ Play: https://keivanipchihagh.github.io/imposter-challenge/**
 
-## How it plays
+## How to play
 
-1. **Host** opens the page, adds player names (host included), picks a **vibe**, sets the number of **rounds** and a **discussion timer**, and hits **Start**.
-2. The game secretly assigns one random player the imposter question each round — **the host doesn't know who**.
-3. The host gets a unique **link per player** (with Copy / Share / Copy-all buttons) and sends each one out via SMS, WhatsApp, etc.
-4. Each player opens their link and sees **only** their name, the round, and their question — nothing else. The question is obfuscated in the URL hash so the host can't casually read it.
-5. Everyone discusses in real life while the host runs the timer.
-6. The host taps in **who the group voted for** (still not told if it's right).
-7. **Reveal** (host screen only): who the imposter actually was, both questions, and the score. If the imposter escaped the vote, they bank a point.
-8. Repeat for all rounds, then see the **final podium**.
+1. **Set up.** One person is the host. Add everyone's names (host included), pick a **vibe**, choose the number of **rounds** and a **discussion timer**, then hit Start.
+2. **Send the links.** Each player gets their own secret link. The host sends them out (SMS, WhatsApp, whatever). One of them is the imposter — even the host doesn't know who.
+3. **Read your question.** Open your link and you'll see just your name and your question. Keep it to yourself. Most answers are short — a name, a number, a word — but feel free to ham it up explaining yours.
+4. **Discuss.** Everyone shares their answer out loud while the timer runs. The imposter tries to blend in; everyone else tries to sniff them out.
+5. **Vote.** The group decides who the imposter is, and the host taps them in.
+6. **Reveal.** Find out who the imposter really was. If they slipped past the vote, they score a point.
+7. **Repeat**, then crown the biggest faker on the final scoreboard.
 
 ## Vibes
 
@@ -24,29 +23,8 @@ A party game inspired by the OG Crew "Imposter" segment. Five players get the **
 | 🚫 | **No Filter** | Dark humour, oversharing territory |
 | 💀 | **Blackout** | Absolute chaos, no survivors |
 
-18 paired questions per vibe; no question repeats within a game.
+## Good to know
 
-## Files
-
-- `index.html` — all screens (host setup, links, timer, vote, reveal, final, plus the player view)
-- `style.css` — mobile-first dark theme
-- `app.js` — routing, question obfuscation, game planning, scoring
-- `questions.json` — questions grouped by vibe, each with a paired imposter variant
-
-## Run locally
-
-It fetches `questions.json`, so serve it over HTTP (don't open the file directly):
-
-```bash
-python3 -m http.server 8000
-# then open http://localhost:8000
-```
-
-## Deploy to GitHub Pages
-
-Push to GitHub, then **Settings → Pages → Deploy from branch → `main` / root**. The included `.nojekyll` keeps Pages from interfering. Done.
-
-## URL structure
-
-- **Player link:** `…/#player=Sam&round=2&q=ENCODED` — the question is XOR-scrambled + base64url-encoded in the hash (not plaintext; obfuscation, not encryption).
-- **Host view:** the default page with no `player=` in the hash. The imposter is **never** shown on the host's screen until the reveal — since the host is a player too.
+- Best with **4+ players**.
+- Works on any phone — no app, no sign-up, nothing to install.
+- Inspired by the OG Crew "Imposter" challenge.

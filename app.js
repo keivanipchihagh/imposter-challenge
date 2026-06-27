@@ -10,9 +10,36 @@
 
   // ---------- tiny DOM helpers ----------
   const $ = (id) => document.getElementById(id);
-  const screens = ['setup', 'links', 'timer', 'vote', 'reveal', 'final', 'player', 'error'];
-  function show(name) {
-    screens.forEach((s) => { const el = $('screen-' + s); if (el) el.hidden = (s !== name); });
+
+  // Screen partials live in screens/*.html and are fetched once, then cached.
+  const screenCache = {};
+  let currentScreen = null;
+  // Per-screen binder — wired after the partial is injected (its DOM is now live).
+  const BINDERS = {
+    setup: bindSetup,
+    links: bindLinks,
+    timer: bindTimer,
+    vote: bindVote,
+    reveal: bindReveal,
+    final: bindFinal,
+  };
+
+  async function loadScreenHtml(name) {
+    if (screenCache[name]) return screenCache[name];
+    const res = await fetch('screens/' + name + '.html');
+    if (!res.ok) throw new Error('Failed to load screen: ' + name);
+    const html = await res.text();
+    screenCache[name] = html;
+    return html;
+  }
+
+  // Inject a screen into #app and bind its events. Idempotent per visit.
+  async function show(name) {
+    const app = $('app');
+    const html = await loadScreenHtml(name);
+    app.innerHTML = html;
+    currentScreen = name;
+    if (BINDERS[name]) BINDERS[name]();
     window.scrollTo(0, 0);
   }
   let toastTimer = null;
@@ -100,13 +127,13 @@
     };
   }
 
-  function renderPlayer(info) {
+  async function renderPlayer(info) {
     const q = info.q ? decodeQuestion(info.q) : null;
-    if (!info.player || !q) { show('error'); return; }
+    if (!info.player || !q) { await show('error'); return; }
+    await show('player');
     $('player-name').textContent = info.player;
     $('player-round').textContent = info.round || '1';
     $('player-question').textContent = q;
-    show('player');
   }
 
   // ===========================================================
@@ -191,6 +218,11 @@
     });
 
     $('btn-start').addEventListener('click', startGame);
+
+    // Populate the freshly-injected setup screen from current state.
+    renderPlayers();
+    renderVibes();
+    renderSettings();
   }
 
   // ===========================================================
@@ -257,15 +289,15 @@
   // ===========================================================
   //  HOST: PHASE ROUTER
   // ===========================================================
-  function goToPhase(phase) {
+  async function goToPhase(phase) {
     game.phase = phase;
     saveGame();
+    await show(phase); // inject + bind the screen, THEN populate it
     if (phase === 'links') renderLinks();
     else if (phase === 'timer') renderTimer();
     else if (phase === 'vote') renderVote();
     else if (phase === 'reveal') renderReveal();
     else if (phase === 'final') renderFinal();
-    show(phase);
   }
 
   function baseUrl() {
@@ -600,10 +632,8 @@
     const info = parseHash();
     if (info) { renderPlayer(info); return; }
 
-    // 2) Host. Bind everything, render setup, maybe resume.
-    bindSetup(); bindLinks(); bindTimer(); bindVote(); bindReveal(); bindFinal();
-    renderPlayers(); renderVibes(); renderSettings();
-
+    // 2) Host. Each screen binds itself when injected by show(), so just
+    //    resume an in-progress game or open setup.
     game = loadGame();
     if (game && resumePhase()) return;
     show('setup');

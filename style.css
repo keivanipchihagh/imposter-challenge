@@ -173,6 +173,7 @@ input[type="text"]:focus { border-color: var(--accent-2); }
   display: flex; align-items: center; justify-content: space-between;
   background: var(--card); border: 1.5px solid var(--line); border-radius: 14px;
   padding: 16px 18px; font-weight: 700; font-size: 16px; cursor: pointer; transition: border-color 0.15s, transform 0.1s;
+  color: var(--text); text-align: left; width: 100%; font-family: inherit;
 }
 .vote-opt:active { transform: scale(0.99); }
 .vote-opt.sel { border-color: var(--accent); background: linear-gradient(160deg, rgba(255,77,109,0.16), transparent); }
