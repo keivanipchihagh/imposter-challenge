@@ -1,0 +1,108 @@
+{
+  "meta": {
+    "name": "Imposter Challenge",
+    "vibes": ["icebreaker", "tipsy", "nofilter", "blackout"]
+  },
+  "vibes": {
+    "icebreaker": {
+      "emoji": "🧊",
+      "label": "Icebreaker",
+      "blurb": "Safe, fun, getting-to-know-you.",
+      "questions": [
+        { "real": "What's your go-to comfort food?", "imposter": "What's a food you secretly can't stand?" },
+        { "real": "What's the best concert you've ever been to?", "imposter": "What's a band everyone loves but you don't get?" },
+        { "real": "What's your ideal way to spend a Sunday?", "imposter": "What's a chore you put off the longest?" },
+        { "real": "What's a hobby you'd love to pick up?", "imposter": "What's a hobby you started and quit immediately?" },
+        { "real": "What's your favorite movie of all time?", "imposter": "What's a movie everyone loves that you fell asleep in?" },
+        { "real": "What's the best vacation you've ever taken?", "imposter": "What's a destination that's wildly overrated?" },
+        { "real": "What's a small thing that always makes your day better?", "imposter": "What's a small thing that instantly ruins your mood?" },
+        { "real": "What's your favorite season and why?", "imposter": "What's the worst season and why?" },
+        { "real": "What's a skill you're genuinely proud of?", "imposter": "What's a skill you pretend to have but don't?" },
+        { "real": "What's your dream job if money didn't matter?", "imposter": "What job could you absolutely never do?" },
+        { "real": "What's the best gift you've ever received?", "imposter": "What's a gift you immediately regifted?" },
+        { "real": "What's your favorite way to wake up in the morning?", "imposter": "What's the worst way to be woken up?" },
+        { "real": "What animal would you love to have as a pet?", "imposter": "What animal genuinely scares you?" },
+        { "real": "What's a song you could listen to on repeat forever?", "imposter": "What's a song that you instantly skip?" },
+        { "real": "What's your favorite holiday tradition?", "imposter": "What's a holiday tradition you secretly dread?" },
+        { "real": "What's a place you'd love to live someday?", "imposter": "What's a place you'd never live no matter what?" },
+        { "real": "What's the best meal you've ever cooked?", "imposter": "What's a dish you completely ruined once?" },
+        { "real": "What's a book or show everyone should experience once?", "imposter": "What's a book you lied about finishing?" }
+      ]
+    },
+    "tipsy": {
+      "emoji": "🍹",
+      "label": "Tipsy",
+      "blurb": "Personal but playful.",
+      "questions": [
+        { "real": "What's the most embarrassing thing on your phone right now?", "imposter": "What's the most embarrassing thing in your search history?" },
+        { "real": "Who in this room would survive the longest in a zombie apocalypse?", "imposter": "Who in this room would get everyone killed first?" },
+        { "real": "What's a guilty pleasure you'd never admit sober?", "imposter": "What's a guilty pleasure you'll defend to the death?" },
+        { "real": "What's the worst date you've ever been on?", "imposter": "What's the worst thing you've ever done on a date?" },
+        { "real": "What's something you do when nobody's watching?", "imposter": "What's something you'd be mortified for people to catch you doing?" },
+        { "real": "What's the biggest lie you told to get out of plans?", "imposter": "What's the most believable excuse you've ever invented?" },
+        { "real": "Who here would you trust with your phone unlocked?", "imposter": "Who here should never be trusted with your phone?" },
+        { "real": "What's the most money you've spent on something dumb?", "imposter": "What's a purchase you still can't justify to yourself?" },
+        { "real": "What's your most irrational fear?", "imposter": "What's a fear you pretend you don't have?" },
+        { "real": "What's a celebrity you'd embarrass yourself in front of?", "imposter": "What celebrity would you actually fight?" },
+        { "real": "What's the worst haircut or outfit you've ever had?", "imposter": "What's a fashion choice you still defend?" },
+        { "real": "What's your most-used emoji and why?", "imposter": "What emoji do you secretly think is overused?" },
+        { "real": "What's a white lie you tell constantly?", "imposter": "What's a lie you've told so often it feels true?" },
+        { "real": "What's the pettiest reason you've unfollowed someone?", "imposter": "What's the pettiest grudge you're still holding?" },
+        { "real": "What's something you're weirdly competitive about?", "imposter": "What's something you always let people win at?" },
+        { "real": "What's the most chaotic thing in your group chat right now?", "imposter": "What's a group chat you muted and never came back to?" },
+        { "real": "What's your toxic trait on a night out?", "imposter": "What's a friend's toxic trait you tolerate on a night out?" },
+        { "real": "What's the drunkest text you've ever sent?", "imposter": "What's a text you wish you could un-send forever?" }
+      ]
+    },
+    "nofilter": {
+      "emoji": "🚫",
+      "label": "No Filter",
+      "blurb": "Dark humour, oversharing territory.",
+      "questions": [
+        { "real": "What's the most unhinged thought you've had today?", "imposter": "What's the most unhinged thing you've actually done this week?" },
+        { "real": "Who in this room would you NOT want to be stuck in an elevator with?", "imposter": "Who in this room would you fake an emergency to escape?" },
+        { "real": "What's a hill you'll die on that nobody agrees with?", "imposter": "What's an opinion you keep to yourself to avoid a fight?" },
+        { "real": "What's the worst thing you've ever said and not apologized for?", "imposter": "What's the worst thing someone said to you that you secretly deserved?" },
+        { "real": "What's a secret you'd take to the grave?", "imposter": "What's a secret about someone else you're dying to tell?" },
+        { "real": "Who here is most likely to get cancelled?", "imposter": "Who here is most likely to start the drama?" },
+        { "real": "What's the pettiest thing you've ever done for revenge?", "imposter": "What's the pettiest revenge you've fantasized about?" },
+        { "real": "What's something you judge people for instantly?", "imposter": "What's something people judge you for that's fair?" },
+        { "real": "What's the most embarrassing thing you've cried about?", "imposter": "What's the most embarrassing reason you've laughed in a serious moment?" },
+        { "real": "What's a red flag you've ignored way too long?", "imposter": "What's a red flag you proudly are?" },
+        { "real": "What's the worst gift you've ever given someone?", "imposter": "What's a gift you gave that you secretly kept for yourself first?" },
+        { "real": "What's a trend you think makes everyone look ridiculous?", "imposter": "What's a trend you hated then secretly joined?" },
+        { "real": "Who here gives the worst advice?", "imposter": "Who here do you go to for advice and ignore every time?" },
+        { "real": "What's the most you've ever stalked someone online?", "imposter": "What's the deepest you've gone into someone's photos by accident?" },
+        { "real": "What's a compliment you give that you don't mean?", "imposter": "What's an insult you've disguised as a compliment?" },
+        { "real": "What's the worst habit you refuse to quit?", "imposter": "What's a habit of yours that's secretly ruining your life?" },
+        { "real": "What's something you'd never say to someone's face?", "imposter": "What's something you've said behind someone's back in this room?" },
+        { "real": "What's the most embarrassing thing you've done for attention?", "imposter": "What's the most desperate thing you've done to be liked?" }
+      ]
+    },
+    "blackout": {
+      "emoji": "💀",
+      "label": "Blackout",
+      "blurb": "Absolute chaos, no survivors.",
+      "questions": [
+        { "real": "What's the most illegal thing you've gotten away with?", "imposter": "What's the most illegal thing you'd do if you knew you'd get away with it?" },
+        { "real": "Who in this room would you swap lives with for a day?", "imposter": "Who in this room would you ruin if you swapped lives for a day?" },
+        { "real": "What's the worst thing you've done while blackout drunk?", "imposter": "What's the worst thing someone TOLD you that you did?" },
+        { "real": "What's a secret that would end a friendship if it got out?", "imposter": "Whose secret are you sitting on right now?" },
+        { "real": "What's the most deranged thing in your camera roll?", "imposter": "What's the one photo you'd delete before letting anyone scroll?" },
+        { "real": "Who here is most likely to fake their own death?", "imposter": "Who here would you believe faked their own death?" },
+        { "real": "What's a crime you think you'd be weirdly good at?", "imposter": "What's a crime you've genuinely planned in your head?" },
+        { "real": "What's the worst thing you've thought about someone in this room?", "imposter": "What's the worst thing you ASSUME someone here thinks about you?" },
+        { "real": "What's the most messed up thing you find genuinely funny?", "imposter": "What's something you laughed at that you absolutely shouldn't have?" },
+        { "real": "What's a lie you've told that completely spiraled?", "imposter": "What's a lie you're STILL maintaining right now?" },
+        { "real": "Who here would survive prison the longest?", "imposter": "Who here would snitch on day one?" },
+        { "real": "What's the most unhinged thing you'd do for a million dollars?", "imposter": "What's the cheapest amount you'd do something unhinged for?" },
+        { "real": "What's the darkest group chat you've ever been in?", "imposter": "What's a group chat you'd be arrested for if leaked?" },
+        { "real": "What's the worst thing you've done and felt zero guilt about?", "imposter": "What's something you feel guilty about that nobody knows?" },
+        { "real": "What's a thought you've had that genuinely scared you?", "imposter": "What's a thought you've had about someone in this room?" },
+        { "real": "Who here would you frame for a crime you committed?", "imposter": "Who here would frame YOU without hesitation?" },
+        { "real": "What's the most chaotic decision you've ever made sober?", "imposter": "What's a decision you blamed on being drunk but weren't?" },
+        { "real": "What's the worst secret you've ever kept for someone?", "imposter": "What's a secret you leaked that you swore you'd keep?" }
+      ]
+    }
+  }
+}

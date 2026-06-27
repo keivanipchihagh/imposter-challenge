@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <meta name="theme-color" content="#0e0e16" />
+  <title>Imposter Challenge</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+</head>
+<body>
+  <div id="app">
+    <!-- ============ HOST: SETUP ============ -->
+    <section class="screen" id="screen-setup">
+      <header class="hero">
+        <h1 class="logo">IMPOSTER<span class="logo-accent">CHALLENGE</span></h1>
+        <p class="tagline">Five get the question. One gets the lie. Find the fraud.</p>
+      </header>
+
+      <div class="card">
+        <h2 class="card-title">Players</h2>
+        <p class="hint">Add everyone playing — including you, the host.</p>
+        <div id="player-list" class="player-list"></div>
+        <div class="add-row">
+          <input type="text" id="player-input" placeholder="Add a player name" autocomplete="off" maxlength="20" />
+          <button class="btn btn-ghost btn-add" id="btn-add-player" type="button">＋</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2 class="card-title">Vibe</h2>
+        <div class="vibe-grid" id="vibe-grid"></div>
+      </div>
+
+      <div class="card">
+        <h2 class="card-title">Settings</h2>
+        <div class="setting-row">
+          <label for="rounds-input">Rounds</label>
+          <div class="stepper">
+            <button type="button" class="step" data-step="rounds" data-dir="-1">−</button>
+            <span id="rounds-val">3</span>
+            <button type="button" class="step" data-step="rounds" data-dir="1">+</button>
+          </div>
+        </div>
+        <div class="setting-row">
+          <label for="timer-input">Discussion timer</label>
+          <div class="stepper">
+            <button type="button" class="step" data-step="timer" data-dir="-1">−</button>
+            <span id="timer-val">90s</span>
+            <button type="button" class="step" data-step="timer" data-dir="1">+</button>
+          </div>
+        </div>
+        <div class="setting-row toggle-row">
+          <div>
+            <label>Allow same imposter twice in a row</label>
+            <p class="hint hint-inline">Off = avoids back-to-back repeats.</p>
+          </div>
+          <button type="button" class="toggle" id="toggle-repeat" aria-pressed="false"><span class="knob"></span></button>
+        </div>
+      </div>
+
+      <p class="error-msg" id="setup-error"></p>
+      <button class="btn btn-primary btn-big" id="btn-start" type="button">Start Game</button>
+      <p class="footnote">Client-side only • no data leaves your device</p>
+    </section>
+
+    <!-- ============ HOST: SEND LINKS ============ -->
+    <section class="screen" id="screen-links" hidden>
+      <header class="hero hero-sm">
+        <h1 class="logo logo-sm">Round <span id="links-round">1</span></h1>
+        <p class="tagline">Send each player their secret question link. Don't peek — one of these is the imposter.</p>
+      </header>
+      <div id="links-list" class="links-list"></div>
+      <button class="btn btn-ghost" id="btn-copy-all" type="button">Copy all links</button>
+      <button class="btn btn-primary btn-big" id="btn-links-done" type="button">Everyone's in — Start discussion</button>
+    </section>
+
+    <!-- ============ HOST: DISCUSSION TIMER ============ -->
+    <section class="screen screen-center" id="screen-timer" hidden>
+      <header class="hero hero-sm">
+        <h1 class="logo logo-sm">Round <span id="timer-round">1</span></h1>
+        <p class="tagline">Discuss. Defend. Deceive.</p>
+      </header>
+      <div class="timer-ring" id="timer-ring">
+        <span class="timer-num" id="timer-display">90</span>
+      </div>
+      <div class="timer-controls">
+        <button class="btn btn-ghost" id="btn-timer-toggle" type="button">Pause</button>
+        <button class="btn btn-ghost" id="btn-timer-reset" type="button">Reset</button>
+      </div>
+      <button class="btn btn-primary btn-big" id="btn-to-vote" type="button">Time's up — Vote</button>
+    </section>
+
+    <!-- ============ HOST: VOTING ============ -->
+    <section class="screen" id="screen-vote" hidden>
+      <header class="hero hero-sm">
+        <h1 class="logo logo-sm">Who's the imposter?</h1>
+        <p class="tagline">Tap the player the group votes for. (You won't be told if you're right yet.)</p>
+      </header>
+      <div id="vote-list" class="vote-list"></div>
+      <p class="error-msg" id="vote-error"></p>
+      <button class="btn btn-primary btn-big" id="btn-reveal" type="button">Lock in vote &amp; Reveal</button>
+    </section>
+
+    <!-- ============ HOST: REVEAL ============ -->
+    <section class="screen screen-center" id="screen-reveal" hidden>
+      <div class="reveal-verdict" id="reveal-verdict"></div>
+      <div class="card reveal-card">
+        <p class="reveal-line">The imposter was</p>
+        <h2 class="reveal-name" id="reveal-imposter">—</h2>
+        <p class="reveal-line">The group voted for</p>
+        <h3 class="reveal-voted" id="reveal-voted">—</h3>
+        <hr class="reveal-hr" />
+        <div class="qrow">
+          <span class="qtag qtag-real">Real question</span>
+          <p id="reveal-q-real">—</p>
+        </div>
+        <div class="qrow">
+          <span class="qtag qtag-imp">Imposter got</span>
+          <p id="reveal-q-imp">—</p>
+        </div>
+      </div>
+      <div class="scoreboard" id="reveal-scoreboard"></div>
+      <button class="btn btn-primary btn-big" id="btn-next-round" type="button">Next Round</button>
+    </section>
+
+    <!-- ============ HOST: FINAL ============ -->
+    <section class="screen screen-center" id="screen-final" hidden>
+      <header class="hero">
+        <h1 class="logo">GAME<span class="logo-accent">OVER</span></h1>
+        <p class="tagline" id="final-tagline">The dust settles.</p>
+      </header>
+      <div class="podium" id="final-podium"></div>
+      <div class="scoreboard scoreboard-final" id="final-scoreboard"></div>
+      <button class="btn btn-primary btn-big" id="btn-play-again" type="button">Play Again</button>
+      <button class="btn btn-ghost" id="btn-new-game" type="button">New Game (reset everything)</button>
+    </section>
+
+    <!-- ============ PLAYER VIEW ============ -->
+    <section class="screen screen-center player-screen" id="screen-player" hidden>
+      <div class="player-card">
+        <p class="player-hello">Hey</p>
+        <h1 class="player-name" id="player-name">—</h1>
+        <p class="player-round">Round <span id="player-round">1</span></p>
+        <div class="player-q-wrap">
+          <p class="player-q-label">Your question</p>
+          <p class="player-q" id="player-question">—</p>
+        </div>
+        <p class="player-foot">Memorize it. Blend in. Don't get caught.</p>
+      </div>
+    </section>
+
+    <!-- ============ PLAYER: BAD LINK ============ -->
+    <section class="screen screen-center" id="screen-error" hidden>
+      <div class="card">
+        <h2 class="card-title">Hmm, that link's broken</h2>
+        <p class="hint">This link couldn't be read. Ask the host to resend your link for this round.</p>
+      </div>
+    </section>
+  </div>
+
+  <div class="toast" id="toast" hidden></div>
+  <script src="app.js"></script>
+</body>
+</html>
