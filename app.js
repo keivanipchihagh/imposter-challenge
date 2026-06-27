@@ -265,6 +265,7 @@
     else if (phase === 'vote') renderVote();
     else if (phase === 'reveal') renderReveal();
     else if (phase === 'final') renderFinal();
+    show(phase);
   }
 
   function baseUrl() {
